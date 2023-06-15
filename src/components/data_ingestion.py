@@ -5,8 +5,9 @@ import os
 from src.exception import CustomException
 from src.logger import logging
 from dataclasses import dataclass
+from data_transformation import DataTransformation
 
-@dataclass
+@dataclass # dataclass by-default adds methods such as __init__ and __repr__ 
 class DataIngestionConfig():
     train_data_path:str = os.path.join("artifacts","train.csv")
     test_data_path:str = os.path.join("artifacts","test.csv")
@@ -41,4 +42,9 @@ class DataIngestion():
         
 
 if __name__=="__main__":
-    DataIngestion().initiate_data_ingestion()
+    obj = DataIngestion()
+    train_set, test_set = obj.initiate_data_ingestion()
+
+    data_transformation = DataTransformation()
+    # train_arr, test_arr,_ = data_transformation.initiate_data_transformation(train_set,test_set)
+    print(data_transformation.initiate_data_transformation(train_set,test_set))
