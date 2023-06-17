@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* CSS reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Style the form */
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        /* Style the form elements */
+        label {
+            font-weight: bold;
+            margin-right: 10px;
+            /* width: 200px; */
+            float: left;
+        }
+
+        select,
+        input {
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: none;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        select:focus,
+        input:focus {
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Style the submit button */
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+
+        .row {
+            display: flex;
+            float: left;
+            justify-content: center;
+            align-items: baseline;
+        }
+
+        /* Style the modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        /* Style the modal content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        /* Style the close button */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <form id="myForm">
+        <div class="row">
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+        </div>
+
+        <div class="row">
+            <label for="race-ethnicity">Race/Ethnicity:</label>
+            <select id="race-ethnicity" name="race-ethnicity">
+                <option value="group A">group-A</option>
+                <option value="group B">group-B</option>
+                <option value="group C">group-C</option>
+                <option value="group D">group-D</option>
+                <option value="group E">group-E</option>
+            </select>
+        </div>
+
+        <div class="row">
+            <label for="parental-education">Parental Level of Education:</label>
+            <select id="parental-education" name="parental-education">
+                <option value="bachelor's degree">bachelor's degree</option>
+                <option value="high school">High School</option>
+                <option value="some college">Some College</option>
+                <option value="college-degree">College Degree</option>
+                <option value="master's degree">master's degree</option>
+                <option value="associate's degree">associate's degree</option>
+            </select>
+        </div>
+
+        <div class="row">
+            <label for="lunch">Lunch:</label>
+            <select id="lunch" name="lunch">
+                <option value="free/reduced">Free</option>
+                <option value="standard">Standard</option>
+            </select>
+        </div>
+        <div class="row">
+            <label for="test-preparation">Test Preparation:</label>
+            <select id="test-preparation" name="test-preparation">
+                <option value="none">None</option>
+                <option value="completed">completed</option>
+            </select>
+        </div>
+
+        <div class="row">
+            <label for="reading-score">Reading Score:</label>
+            <input type="number" id="reading-score" name="reading-score">
+        </div>
+        <div class="row">
+            <label for="writing-score">Writing Score:</label>
+            <input type="number" id="writing-score" name="writing-score">
+        </div>
+        <input type="submit" value="Predict">
+    </form>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Results are: 69</p>
+        </div>
+    </div>
+    <script>
+        // Get the form and modal elements
+        const form = document.getElementById("myForm");
+        const modal = document.getElementById("myModal");
+
+        // Get the close button and add an event listener to close the modal
+        const closeBtn = modal.querySelector(".close");
+        closeBtn.addEventListener("click", () => {
+            modal.style.display = "none";
+        });
+
+        // Add an event listener to the form to display the modal when the submit button is clicked
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+            modal.style.display = "block";
+        });
+    </script>
+</body>
+
+</html>
