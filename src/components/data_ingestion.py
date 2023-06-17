@@ -6,6 +6,7 @@ from src.exception import CustomException
 from src.logger import logging
 from dataclasses import dataclass
 from data_transformation import DataTransformation
+from model_trainer import ModelTrainer
 
 @dataclass # dataclass by-default adds methods such as __init__ and __repr__ 
 class DataIngestionConfig():
@@ -46,5 +47,8 @@ if __name__=="__main__":
     train_set, test_set = obj.initiate_data_ingestion()
 
     data_transformation = DataTransformation()
-    # train_arr, test_arr,_ = data_transformation.initiate_data_transformation(train_set,test_set)
-    print(data_transformation.initiate_data_transformation(train_set,test_set))
+    train_arr, test_arr,_ = data_transformation.initiate_data_transformation(train_set,test_set)
+    model_trainer= ModelTrainer()
+
+    print(model_trainer.initiate_model_trainer(train_array=train_arr, test_array=test_arr))
+    

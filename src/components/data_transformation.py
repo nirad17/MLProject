@@ -38,7 +38,7 @@ class DataTransformation() :
             #Categorical Pipeline
             cat_pipeline = Pipeline(
                 [
-                    ("impute", SimpleImputer(strategy="mode")),
+                    ("impute", SimpleImputer(strategy="most_frequent")),
                     ('one_hot_encoder', OneHotEncoder()),
                     ('scaler', StandardScaler(with_mean=False))
                 ]
@@ -82,6 +82,7 @@ class DataTransformation() :
 
             input_feature_train_arr=preprocessing_obj.fit_transform(input_features_train_df)
             input_feature_test_arr=preprocessing_obj.transform(input_features_test_df)
+
             logging.info("Preprocessing done")
 
             train_arr = np.c_[
@@ -99,4 +100,5 @@ class DataTransformation() :
 
             return(train_arr,test_arr, self.data_transformation_config.preprocessor_obj_file)
         except Exception as e:
-            CustomException(e,sys)
+            # CustomException(e,sys)
+            print(e)
