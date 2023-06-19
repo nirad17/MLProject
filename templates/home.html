@@ -106,7 +106,7 @@
 </head>
 
 <body>
-    <form id="myForm">
+    <form id="myForm" action="{{url_for('predict_datapoint')}}" method="post">
         <div class="row">
             <label for="gender">Gender:</label>
             <select id="gender" name="gender">
@@ -163,18 +163,23 @@
         </div>
         <input type="submit" value="Predict">
     </form>
-
+    <h2 id="hide_this">
+        Math score is : {{results}}
+    </h2>
     <div id="myModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <p>Results are: 69</p>
+            <p id="results_p">Results are: {{results}}</p>
         </div>
     </div>
     <script>
         // Get the form and modal elements
         const form = document.getElementById("myForm");
         const modal = document.getElementById("myModal");
-
+        const results = document.getElementById("results_p");
+        const hide = document.getElementById("hide_this");
+        
+        // hide.style.display="none"
         // Get the close button and add an event listener to close the modal
         const closeBtn = modal.querySelector(".close");
         closeBtn.addEventListener("click", () => {
@@ -183,8 +188,9 @@
 
         // Add an event listener to the form to display the modal when the submit button is clicked
         form.addEventListener("submit", (event) => {
-            event.preventDefault();
+            // event.preventDefault();
             modal.style.display = "block";
+            
         });
     </script>
 </body>

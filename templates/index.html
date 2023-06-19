@@ -7,6 +7,8 @@
 </head>
 <body>
     <h1>Hello Welcome to ML project</h1>
-    <a href="home.html"></a><button type="button">Predict</button>
+    <form action="{{url_for('predict_datapoint')}}" method="get">
+        <input type="submit" value="Predict">
+    </form>
 </body>
 </html>
