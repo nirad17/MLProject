@@ -1,7 +1,6 @@
 from flask import Flask, request, render_template
 
 from src.pipline.predict_pipeline import CustomData, PredictPipeline
-from src.pipline.train_pipeline import TrainPipeline
 
 application = Flask(__name__)
 
@@ -9,9 +8,7 @@ app= application
 
 @app.route('/')
 def index():
-    train = TrainPipeline()
-    score = train.initiate_training()
-    return render_template("index.html", score= score)
+    return render_template("index.html")
 
 @app.route('/predictdata',methods=[ "GET","POST"])
 def predict_datapoint():
@@ -38,4 +35,4 @@ def predict_datapoint():
         print("after Prediction")
         return render_template('home.html',results=results[0])
 if __name__=="__main__":
-    app.run(host="0.0.0.0", debug=True)
+    app.run()
