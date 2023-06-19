@@ -1,4 +1,0 @@
-{
-    "appService.defaultWebAppToDeploy": "undefined/subscriptions/c2e16eac-c9c0-4305-b595-a6fbcc18209f/resourceGroups/appsvc_linux_centralus_basic/providers/Microsoft.Web/sites/student-performance-prediction",
-    "appService.deploySubpath": "."
-}
