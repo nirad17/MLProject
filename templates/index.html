@@ -1,14 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MLProject</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MLProject</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <style>
+    * {
+      margin: 15px;
+    }
+    body {
+      margin-top: 80px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+  </style>
 </head>
+
 <body>
-    <h1>Hello Welcome to ML project</h1>
-    <form action="{{url_for('predict_datapoint')}}" method="get">
-        <input type="submit" value="Predict">
-    </form>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+
+  <h1>Hello Welcome to ML project</h1>
+  <form action="{{url_for('get_data')}}" method="get">
+
+    <button type="submit" class="btn btn-primary">View Data</button>
+
+  </form>
+  {{data | safe }}
+  <form action="{{url_for('predict_datapoint')}}" method="get">
+    <button type="submit" class="btn btn-primary">Predict</button>
+  </form>
 </body>
+
 </html>

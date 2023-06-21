@@ -1,5 +1,6 @@
-from flask import Flask, request, render_template
 
+from flask import Flask, request, render_template
+import pandas as pd
 from src.pipline.predict_pipeline import CustomData, PredictPipeline
 
 application = Flask(__name__)
@@ -9,7 +10,7 @@ app= application
 @app.route('/')
 def index():
     return render_template("index.html")
-
+    # return redirect("/predictdata",code =302)
 @app.route('/predictdata',methods=[ "GET","POST"])
 def predict_datapoint():
     if request.method=="GET":
@@ -34,5 +35,13 @@ def predict_datapoint():
         results=predict_pipeline.predict(pred_df)
         print("after Prediction")
         return render_template('home.html',results=results[0])
+
+@app.route("/getdata",methods=["GET"])
+def get_data():
+    c=request.form.get("check")
+    train_file_path = "artifacts/train.csv"
+    df = pd.read_csv(train_file_path)
+    return render_template("index.html", data = df.head(20).to_html())
+
 if __name__=="__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0",debug=True)
